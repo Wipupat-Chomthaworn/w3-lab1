@@ -1,0 +1,73 @@
+PS C:\Users\LAB203-01\Desktop> cd w3-lab1
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git init
+Initialized empty Git repository in C:/Users/LAB203-01/Desktop/w3-lab1/.git/
+PS C:\Users\LAB203-01\Desktop\w3-lab1> echo "# Line 1" > README.md
+>> echo "# Line 2" >> README.md
+>> git add README.md
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git status
+On branch master
+No commits yet
+
+  (use "git rm --cached <file>..." to unstage)
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+On branch master
+nothing to commit, working tree clean
+2d2b744 (HEAD -> master) My First Commit
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git branch
+* master
+* main
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git branch new_branch
+* main
+  new_branch
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git switch main  
+Already on 'main'
+>> git add README.md
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git commit -m "Added Line four"
+[main 0b78736] Added Line four
+PS C:\Users\LAB203-01\Desktop\w3-lab1>  cat README.md
+# Line 1
+# Line 2
+# Line 4 (master)
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git switch new_branch
+Switched to branch 'new_branch'
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git branch
+* new_branch
+PS C:\Users\LAB203-01\Desktop\w3-lab1>  cat README.md
+# Line 1
+# Line 2
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git log --all --oneline 
+0b78736 (main) Added Line four
+PS C:\Users\LAB203-01\Desktop\w3-lab1> echo "This line is added in the feature branch." >> README.md
+>> git add README.md
+>> git commit -m "New branch commit"
+[new_branch d6bccad] New branch commit
+>> git add README.md
+[new_branch 2e6b978] New branch commit 2
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git log --all --oneline
+2e6b978 (HEAD -> new_branch) New branch commit 2
+d6bccad New branch commit
+0b78736 (main) Added Line four
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git branch experimental
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git switch experimental
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git branch
+  main
+  new_branch
+>> echo "Finall this branch will delete" >> README.md
+>> git add README.md
+>> git commit -m "New branch commit 2"
+[experimental bcf8d8f] New branch commit 2
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git switch main  
+Switched to branch 'main'
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git branch -d experimental
+error: the branch 'experimental' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D experimental'
+PS C:\Users\LAB203-01\Desktop\w3-lab1> git branch -D experimental
+Deleted branch experimental (was bcf8d8f).
+PS C:\Users\LAB203-01\Desktop\w3-lab1> 
+ git log --all --oneline
+2e6b978 (new_branch) New branch commit 2
+0b78736 (HEAD -> main) Added Line four
+2d2b744 My First Commit
